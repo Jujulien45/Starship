@@ -1,5 +1,5 @@
 import { readFile } from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { dirname, relative, resolve } from 'node:path';
 import { defineConfig } from 'vite';
 
 const headerPath = resolve(import.meta.dirname, 'header.html');
@@ -10,16 +10,21 @@ export default defineConfig({
   base: './',
   plugins: [{
     name: 'starship-layout',
-    // Insert the editable HTML partials into both pages.
-    async transformIndexHtml(html) {
-      const [header, footer] = await Promise.all([
-        readFile(headerPath, 'utf8'),
-        readFile(footerPath, 'utf8'),
-      ]);
-      return html.replace('<!-- site-header -->', () => header)
-        .replace('<!-- site-footer -->', () => footer);
+    // Insert the editable HTML partials into each page.
+    transformIndexHtml: {
+      order: 'pre',
+      async handler(html, { filename }) {
+        const [header, footer] = await Promise.all([
+          readFile(headerPath, 'utf8'),
+          readFile(footerPath, 'utf8'),
+        ]);
+        const prefix = relative(dirname(filename), import.meta.dirname) || '.';
+        const navigation = header.replaceAll('href="/', `href="${prefix}/`);
+        return html.replace('<!-- site-header -->', () => navigation)
+          .replace('<!-- site-footer -->', () => footer);
+      },
     },
-    // Reload both pages when a shared partial changes in development.
+    // Reload pages when a shared partial changes in development.
     handleHotUpdate({ file, server }) {
       if (file === headerPath || file === footerPath) {
         server.ws.send({ type: 'full-reload' });
@@ -31,7 +36,8 @@ export default defineConfig({
     rolldownOptions: {
       input: {
         home: resolve(import.meta.dirname, 'index.html'),
-        engineering: resolve(import.meta.dirname, 'engineering.html'),
+        tech: resolve(import.meta.dirname, 'engineering.html'),
+        telemetry: resolve(import.meta.dirname, 'telemetry/index.html'),
       },
     },
   },

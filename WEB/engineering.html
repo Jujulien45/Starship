@@ -3,41 +3,56 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Engineering | Starship CanSat</title>
-  <link rel="icon" type="image/svg+xml" href="./images/favicon.svg">
+  <title>Tech | Starship CanSat</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="stylesheet" href="styles.css">
   <script type="module" src="./site.js"></script>
 </head>
-<body data-page="engineering">
+<body data-page="tech">
   <!-- site-header -->
   <main class="wrap">
     <div class="hero">
-      <h1>Engineering</h1>
-      <p class="lead">The systems that take a measurement from the payload to the ground station.</p>
+      <h1>Tech</h1>
+      <p class="lead">Inside the CanSat and its ground station, from the first sensor reading to the flight plots.</p>
     </div>
-    <section class="section-row" id="objectives">
-      <h2>Mission Objectives</h2>
-      <p>Collect flight measurements and make them available for review after recovery.</p>
+    <section class="section-row" id="data-path">
+      <h2>Data Path</h2>
+      <div class="stack">
+        <ol class="data-path" aria-label="Planned telemetry path">
+          <li>Sensors</li>
+          <li>RP2350</li>
+          <li>LoRa link</li>
+          <li>ESP32 ground station</li>
+          <li>Wi-Fi to dashboard</li>
+        </ol>
+        <p>The onboard controller also writes timestamped readings to local storage so we can analyze the flight after recovery. The radio model is still under consideration.</p>
+      </div>
     </section>
     <section class="section-row" id="hardware">
-      <h2>Hardware</h2>
-      <p>The payload needs sensors, a controller, a power supply, and a radio.</p>
+      <h2>Measurements &amp; Hardware</h2>
+      <dl class="measurements">
+        <dt>Atmosphere</dt>
+        <dd>BME688 for pressure, temperature, humidity, and gas resistance. TMP36 and SHT45 provide additional temperature and humidity readings. A dedicated CO sensor is planned.</dd>
+        <dt>Motion and position</dt>
+        <dd>An IMU measures acceleration and rotation. The MAX-M10S GPS logs position and speed so we can reconstruct the flight path.</dd>
+        <dt>Power and sound</dt>
+        <dd>We’re considering an INA260 to monitor voltage and current, and an ICS-43434 microphone to capture flight sounds.</dd>
+      </dl>
     </section>
     <section class="section-row" id="software">
-      <h2>Software</h2>
-      <p>Onboard software will sample sensors and give each reading a timestamp.</p>
+      <h2>Software &amp; Storage</h2>
+      <p>The flight software will timestamp readings and log them to microSD. We’re also considering onboard flash storage. After the flight, we can calculate quantities such as descent speed from changes in altitude over time and compare the results with the radio recording.</p>
     </section>
-    <section class="section-row" id="communication">
-      <h2>Communication</h2>
-      <p>The ground station receives telemetry and records it locally for playback.</p>
+    <section class="section-row" id="electronics">
+      <h2>Electronics &amp; CAD</h2>
+      <p>The payload design brings the RP2350, sensors, storage, and radio together inside a can-sized enclosure. We’ll add wiring diagrams and interactive 3D models when the files are ready.</p>
     </section>
-    <section class="section-row" id="mechanical">
-      <h2>Mechanical Design</h2>
-      <p>The enclosure must fit the payload and hold its components securely in flight.</p>
-    </section>
-    <section class="section-row" id="testing">
-      <h2>Testing</h2>
-      <p>A ground test will check the path from a sensor reading to a saved recording.</p>
+    <section class="section-row" id="project-files">
+      <h2>Project Files</h2>
+      <div class="stack">
+        <p>Explore our GitHub repository for the full project, including files we haven’t covered here.</p>
+        <a class="action" href="https://github.com/Jujulien45/Starship">View on GitHub</a>
+      </div>
     </section>
   </main>
   <!-- site-footer -->

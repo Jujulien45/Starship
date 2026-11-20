@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Telemetry | Starship CanSat</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="./telemetry.css">
+  <script type="module" src="../site.js"></script>
+  <script type="module" src="./telemetry.js"></script>
+</head>
+<body data-page="telemetry">
+  <!-- site-header -->
+  <main class="wrap">
+    <div class="hero">
+      <h1>Telemetry</h1>
+      <p class="lead">View a sample descent or check the live feed status.</p>
+    </div>
+    <section class="telemetry-panel" aria-label="Flight dashboard">
+      <div class="dataset-controls">
+        <label for="dataset">Data source</label>
+        <select id="dataset">
+          <option value="sample">Sample flight</option>
+          <option value="live">Live</option>
+        </select>
+      </div>
+      <p class="telemetry-status" role="status"></p>
+      <div id="flight" hidden>
+        <h2>Altitude during descent</h2>
+        <canvas class="flight-chart" role="img" aria-label="Line chart of altitude in metres against elapsed time in seconds. Individual values are available below."></canvas>
+        <details>
+          <summary>View readings</summary>
+          <table class="flight-data">
+            <thead><tr><th scope="col">Time (s)</th><th scope="col">Altitude (m)</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </details>
+      </div>
+    </section>
+  </main>
+  <!-- site-footer -->
+</body>
+</html>

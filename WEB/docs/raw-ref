@@ -1,0 +1,108 @@
+# CANSAT
+
+## MCU-
+
+**RP2350**
+
+## Atmospheric sensors
+
+**BME688**
+
+- Raw: temperature, pressure, humidity, gas resistance
+- From these: altitude, vertical speed, atmospheric profile, broad gas/VOC changes
+
+**TMP36**
+
+- Raw: analog voltage → temperature
+- Independent/simple temperature measurement
+
+**SHT45**
+
+- Raw: temperature, relative humidity
+- From these: dew point, absolute humidity
+
+**Specific gas sensor** → SPEC 3SP_CO_1000 for CO
+
+## Flight dynamics
+
+**ICM-20948 (MPU-9250)**
+
+- Raw: 3-axis acceleration, 3-axis angular velocity, 3-axis magnetic field
+- From these: orientation, rotation, acceleration, movement/flight dynamics
+
+## Position
+
+**GPS module — MAX-M10S-00B**
+
+- Raw: latitude, longitude, altitude, time, ground speed
+- From these: trajectory, displacement, horizontal speed, GPS-based descent speed
+
+## Storage
+
+**Flash storage** : Winbond W25Q128JV (skip for beradboard testing i guess)
+
+**SD module** : Generic 3.3 V microSD SPI breakout
+
+## Communication
+
+**Radio — Ebyte E22-400M22S ( or something that supports LoRa**
+
+## Power 
+
+**Voltage/current sensor — INA260(not sure)**
+
+- Raw: battery voltage, current
+- From these: power consumption, energy consumption, battery behaviour
+
+
+**TP 4056**
+
+- Raw: charge over usb-c
+- From these: -
+## Sound
+
+**Microphone — ICS-43434 (not sure)**
+
+- Raw: sound-pressure waveform / amplitude
+- From this: sound level, frequency spectrum, detection of flight events
+
+## Time
+
+**RTC- DS3231** (crystal is temp compensated and integrated)
+
+- Raw: date and time
+- Provides independent timestamps for measurements
+
+# GROUND STATION
+
+## MCU
+**ESP32**
+## Communication
+
+**Radio - same as above**
+- **antenna**
+
+## Computer interface
+
+**Wi-Fi**
+
+- Sends received telemetry to computer/server for live processing and visualisation
+-------
+
+
+| Component                     | Name                                            |
+| ----------------------------- | ----------------------------------------------- |
+| MCU                           | RP2350 + ESP32                                  |
+| Radio                         | Ebyte E22-400M22S ×2 (or another LoRa radio)    |
+| Atmospheric sensor            | BME688                                          |
+| Temperature sensor            | TMP36                                           |
+| Temperature / humidity sensor | SHT45                                           |
+| CO sensor                     | SPEC 3SP_CO_1000                                |
+| IMU                           | ICM-20948 (MPU-9250)                            |
+| GPS                           | MAX-M10S-00B                                    |
+| Flash storage                 | Winbond W25Q128JV (skip for breadboard testing) |
+| SD module                     | Generic 3.3 V microSD SPI breakout              |
+| Voltage / current sensor      | INA260 (not sure)                               |
+| Microphone                    | ICS-43434 (not sure)                            |
+| RTC                           | DS3231                                          |
+

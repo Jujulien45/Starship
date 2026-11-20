@@ -7,7 +7,11 @@ const storageKey = 'starship-theme';
 
 function setTheme(theme) {
   root.dataset.theme = theme;
-  toggle.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
+  const nextTheme = theme === 'dark' ? 'light' : 'dark';
+  const label = `Switch to ${nextTheme} mode`;
+  toggle.textContent = nextTheme === 'light' ? '☀︎' : '☾';
+  toggle.setAttribute('aria-label', label);
+  toggle.title = label;
 }
 
 // Restore the visitor’s saved choice when storage is available.

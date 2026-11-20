@@ -8,7 +8,7 @@ Home and Engineering share a responsive header, footer, typography, and light an
 
 ## Visual direction
 
-- Use the project name and logo as a masthead. The masthead and browser tab share `public/images/favicon.svg`, with white artwork on a `#202e43` background. Home is the dedicated navigation link, and the footer focuses on the school, location, and contact details.
+- Use the project name and logo as a masthead. The masthead and browser tab share `assets/favicon.svg`, with white artwork on a `#202e43` background. Home is the dedicated navigation link, and the footer focuses on the school, location, and contact details.
 - Support light and dark modes on all three pages, including the telemetry charts. Follow the visitor’s system preference by default and keep their choice when they switch themes in the shared header.
 - Use a clean, regular layout with the same header, navigation, typography, spacing, and control styles across Home, Engineering, and Telemetry. Use a shared accent color and keep text, controls, and chart labels legible in both modes.
 - Use a restrained blue palette with pale blue-gray surfaces in light mode and deep navy surfaces in dark mode. Reserve muted red for statuses that need it.
