@@ -15,53 +15,185 @@
       <div>
         <p class="season">CanSat 2026–2027 · CEPES · Jodoigne</p>
         <h1>Starship</h1>
-        <p class="lead">We’re Starship, a student team from CEPES in Jodoigne, Belgium, taking part in the 2026–2027 CanSat competition.</p>
+        <p class="lead">
+          We’re Starship, a student team from CEPES in Jodoigne, Belgium, taking part in the
+          CanSat competition.
+        </p>
+      </div>
+      <img class="hero-mark" src="/assets/favicon.svg" alt="">
+    </section>
+
+    <section class="section-row" id="about-cansat">
+      <h2>What is the CanSat competition?</h2>
+      <div class="cansat-layout">
+        <div class="stack">
+          <p>
+            CanSat is a competition where student teams design, build, and launch a working model of a
+            satellite <strong>the size of a bevarage can</strong>.
+          </p>
+          <p>
+            During descent, the CanSat measures <strong>air temperature and pressure</strong> and sends the readings to
+            a ground station. Each team should also design a <em>secondary mission</em> of its own.
+          </p>
+          <dl class="measurements">
+            <dt>Competition rules</dt>
+            <dd>
+              In this European Space Agency education project, students work within size and weight
+              limits, test their design, and present their results.
+            </dd>
+            <dt>Building a miniature satellite</dt>
+            <dd>
+              Teams must fit the sensors, onboard computer, power supply, and radio into a can-sized
+              structure. They write the flight software and set up a ground station to receive the
+              data.
+            </dd>
+            <dt>Launch and analysis</dt>
+            <dd>
+              After the flight, teams analyse the data to see whether they met their mission
+              objectives and use the results to present their analysis and explain their engineering choices.
+            </dd>
+          </dl>
+          <div class="cansat-resources">
+            <h3>For more information:</h3>
+            <ul>
+              <li>
+                <a href="https://education.esa.int/what_is_a_cansat/">ESA Education · What is a CanSat?</a>
+              </li>
+              <li>
+                <a href="https://recherche.wallonie.be/Cansat-Belgium">Wallonie Recherche · CanSat Belgium</a>
+              </li>
+              <li>
+                <a href="https://en.wikipedia.org/wiki/CanSat">Wikipedia · CanSat</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cansat-graphic">
+          <img
+            src="./assets/cansat-belgium.webp"
+            alt="CanSat Belgium logo showing a can descending by parachute"
+            width="3508"
+            height="2482"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="section-row section-centered" id="mission">
+      <h2>Our Mission</h2>
+      <div class="stack">
+        <p>
+          Our goal is to <strong>reconstruct the CanSat’s flight in 3D</strong>. We’ll use GPS and motion sensors
+          to estimate its position and orientation throughout the descent, including how fast it
+          falls, how it tilts, and how it spins.
+        </p>
+        <p>
+          We’ll build a data analysis framework that brings together atmospheric readings, motion
+          data, and measurements from the onboard microphone. During the flight, our dashboard will
+          use <strong>live telemetry</strong> to show how atmospheric conditions and
+          sound change during descent. <em>After recovery</em>, we’ll compare the telemetry with the full
+          onboard recording, analyse the flight in greater detail and establish losses due to radio communication.
+        </p>
+        <p>
+          We’ll use <strong>matching atmospheric sensors</strong> at the ground station to record a dynamic reference.
+          Comparing simultaneous readings from the ground and the
+          CanSat will help us distinguish changes with altitude from changes over time. We’ll also
+          use the CanSat’s estimated position relative to the ground station to calculate the
+          bearing and elevation for pointing our Yagi antenna.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-row section-centered" id="team">
+      <h2>Our Team</h2>
+      <p>
+        We’re a team of <strong>CEPES students</strong> in our fourth to sixth years of secondary school.
+        We study subjects such as <i>informatics and math-science </i>. Together, we’re
+        designing the CanSat, its onboard electronics, the ground station that receives data
+        and software to analyse it.
+      </p>
+      <img
+        class="team-photo"
+        src="./assets/team.webp"
+        alt="The Starship CanSat team standing together in a classroom"
+        width="2880"
+        height="2160"
+        loading="lazy"
+      >
+      <!-- Replace each placeholder with an img using class="team-portrait" and the member’s photo. -->
+      <ul class="team-grid" aria-label="Team profiles">
+        <li class="team-card">
+          <span class="team-portrait team-portrait-closeup">
+            <img src="./assets/hlib-ryzhkin.png" alt="" loading="lazy">
+          </span>
+          <h3>Hlib Ryzhkin</h3>
+          <p class="team-option">Math-Science · 5</p>
+          <p>Coordination and Web Development</p>
+        </li>
+        <li class="team-card">
+          <img class="team-portrait" src="./assets/julien-mondy.png" alt="" loading="lazy">
+          <h3>Julien Mondy</h3>
+          <p class="team-option">Informatics · 6</p>
+          <p>Embedded Software Development</p>
+        </li>
+        <li class="team-card">
+          <img class="team-portrait" src="./assets/loric.png" alt="" loading="lazy">
+          <h3>Loric ...</h3>
+          <p class="team-option">Math-Science · 4</p>
+          <p>Electronics and CAD</p>
+        </li>
+        <li class="team-card">
+          <span class="team-portrait" aria-hidden="true"></span>
+          <h3>Théo Balan</h3>
+          <p class="team-option">Informatics · 5</p>
+          <p>Design and Social media manager</p>
+        </li>
+        <li class="team-card">
+          <img class="team-portrait" src="./assets/alexandra-gotler.png" alt="" loading="lazy">
+          <h3>Alexandra Gotler</h3>
+          <p class="team-option">Math-Science · 5</p>
+          <p>Communication and outreach</p>
+        </li>
+        <li class="team-card">
+          <img class="team-portrait" src="./assets/charlotte-danau.png" alt="" loading="lazy">
+          <h3>Charlotte Danau</h3>
+          <p class="team-option">Math-Science · 5</p>
+          <p>Data Analysis and parachute development</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section-row section-centered" id="philosophy">
+      <h2>Our Philosophy</h2>
+      <div class="stack">
         <figure class="motto">
           <blockquote>
             <p>“An idiot admires complexity. A genius admires simplicity.”</p>
           </blockquote>
-          <figcaption>— Terry A. Davis, the creator of <a href="https://templeos.org/">TempleOS</a>, a public-domain OS.</figcaption>
+          <figcaption>
+            — Terry A. Davis, the creator of <a href="https://templeos.org/">TempleOS</a>,
+            a public-domain OS.
+          </figcaption>
         </figure>
-        <p>For us, simplicity starts with choosing sensors that answer specific questions about our descent. The challenge is to understand what each sensor can measure and where its limits are, then get as much out of every reading as we can. We’ll record the raw data, calculate everything it can reliably tell us, from descent speed to how conditions change with altitude, and visualise the results.</p>
-      </div>
-      <img class="hero-mark" src="/assets/favicon.svg" alt="">
-    </section>
-    <section class="section-row" id="about-cansat">
-      <h2>What is a CanSat?</h2>
-      <div class="stack">
-        <p>A CanSat is a working model of a satellite that fits inside a drinks can. During descent, it measures air temperature and pressure and transmits the readings to a ground station. Each team also chooses a secondary mission of its own.</p>
-        <dl class="measurements">
-          <dt>The CanSat competition</dt>
-          <dd>In this European Space Agency education project, students work within size and weight limits, test their design, and present their results at the end of the competition.</dd>
-          <dt>Building a miniature satellite</dt>
-          <dd>Teams fit the sensors, onboard computer, power supply, and radio into a can-sized structure. They write the flight software and set up a ground station to receive the data.</dd>
-          <dt>Launch and analysis</dt>
-          <dd>After the flight, teams analyse the data to see whether they met their mission objectives and use the results to explain their engineering choices.</dd>
-        </dl>
-        <div class="cansat-resources">
-          <h3>Further reading</h3>
-          <ul>
-            <li><a href="https://education.esa.int/what_is_a_cansat/">ESA Education · What is a CanSat?</a></li>
-            <li><a href="https://recherche.wallonie.be/Cansat-Belgium">Wallonie Recherche · CanSat Belgium</a></li>
-            <li><a href="https://en.wikipedia.org/wiki/CanSat">Wikipedia · CanSat</a></li>
-          </ul>
-        </div>
+        <p>
+          For us, simplicity starts with choosing sensors that answer specific questions about our
+          descent. The challenge is to understand what each sensor can measure and where its limits
+          are, then <em>get as much out of every reading as we can</em> instead of over engeneering with unrelated features.
+        </p>
       </div>
     </section>
-    <section class="section-row" id="mission">
-      <h2>Our Mission</h2>
-      <p>We plan to profile the atmosphere during descent, track how the CanSat moves, and send readings to our ground station. After recovery, we’ll compare the radio telemetry with the onboard recording.</p>
-    </section>
-    <section class="section-row" id="team">
-      <h2>Meet the Team</h2>
-      <p>We’re the CEPES students building the payload, ground station, and flight dashboard. Individual profiles will be added here.</p>
-    </section>
+
     <section class="section-row" id="sponsors">
-      <h2>Sponsors</h2>
+      <h2>Our Sponsors</h2>
       <p>Sponsor details will be added here.</p>
     </section>
+
     <nav class="page-next" aria-label="Next page">
-      <a class="action" href="tech.html">Explore the technical side of project<span aria-hidden="true">→</span></a>
+      <a class="action" href="tech.html">
+        Explore the technical side of project<span aria-hidden="true">→</span>
+      </a>
     </nav>
   </main>
   <!-- site-footer -->

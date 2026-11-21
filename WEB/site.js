@@ -44,3 +44,41 @@ activeLink?.setAttribute('aria-current', 'page');
 window.addEventListener('pageshow', (event) => {
   if (event.persisted) restoreTheme(root.dataset.theme);
 });
+
+const telemetryDiagrams = document.querySelectorAll('.telemetry-flow');
+const flowMotionToggle = document.querySelector('.flow-motion-toggle');
+if (telemetryDiagrams.length) {
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      entry.target.classList.toggle('is-visible', entry.isIntersecting);
+    }
+  }, { threshold: 0.3 });
+  telemetryDiagrams.forEach((diagram) => observer.observe(diagram));
+}
+
+if (flowMotionToggle) {
+  const flowSection = flowMotionToggle.closest('section');
+  flowMotionToggle.hidden = false;
+  flowMotionToggle.addEventListener('click', () => {
+    const paused = flowSection.classList.toggle('is-paused');
+    flowMotionToggle.textContent = paused ? 'Resume animation' : 'Pause animation';
+  });
+}
+
+const emailAddress = document.querySelector('.footer-email-address');
+const emailStatus = document.querySelector('.footer-email-status');
+
+emailAddress?.addEventListener('click', async () => {
+  emailStatus.textContent = '';
+  try {
+    await navigator.clipboard.writeText(emailAddress.textContent.trim());
+    emailStatus.textContent = 'Email address copied.';
+  } catch {
+    const range = document.createRange();
+    range.selectNodeContents(emailAddress);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    emailStatus.textContent = 'Email address selected. Copy it manually.';
+  }
+});

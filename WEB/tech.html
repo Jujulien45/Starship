@@ -13,42 +13,241 @@
   <main class="wrap">
     <div class="hero">
       <h1>Tech</h1>
-      <p class="lead">Inside the CanSat and its ground station, from the first sensor reading to the flight plots.</p>
+      <p class="lead">
+        More technical details about our CanSat and its ground station.
+      </p>
     </div>
+
     <section class="section-row" id="data-path">
       <h2>Data Path</h2>
-      <div class="stack">
-        <ol class="data-path" aria-label="Planned telemetry path">
-          <li>Sensors</li>
-          <li>RP2350</li>
-          <li>LoRa link</li>
-          <li>ESP32 ground station</li>
-          <li>Wi-Fi to dashboard</li>
-        </ol>
-        <p>The onboard controller also writes timestamped readings to local storage so we can analyze the flight after recovery. The radio model is still under consideration.</p>
+      <div class="data-path-layout">
+        <div class="stack">
+          <p>
+            During the flight Cansat's sensors send readings to the onboard controller(MCU).
+            Then MCU sends them by radio to the ground station, which adds introduces second part and passes them
+            over Wi-Fi to the dashboard for live viewing.
+          </p>
+          <ol class="data-path" aria-label="Planned telemetry path">
+            <li>Sensors</li>
+            <li>RP2350(Cansat's MCU)</li>
+            <li>ESP32(Ground Station's MCU)</li>
+            <li>PC</li>
+          </ol>
+          <p>
+            Cansat as well as Ground station and PC receiving data all write 
+            <strong>timestamped readings to local storage</strong>.
+            Such redundancy used to ensure maximum data preservation with further analysis on losses(during which stsage data was lost)
+          </p>
+          <p>
+            Wifi will be hosted from any available device, acces to net is not required, but if available, it will be used to send data to the cloud directly for further analysis.
+          </p>
+        </div>
+
+        <div class="data-path-glossary">
+          <h3>What each part does</h3>
+          <dl class="measurements">
+            <dt>Sensors</dt>
+            <dd>Measure the air, motion, position, and sound during flight.</dd>
+            <dt>RP2350</dt>
+            <dd>The small computer inside the CanSat that collects and timestamps readings.</dd>
+            <dt>Local storage</dt>
+            <dd>Keeps a copy of the readings inside the CanSat for later analysis.</dd>
+            <dt>LoRa</dt>
+            <dd>The radio link between the CanSat and the ground.</dd>
+            <dt>ESP32 ground station</dt>
+            <dd>Receives readings from the radio and relays them to the computer over Wi-Fi.</dd>
+            <dt>Dashboard</dt>
+            <dd>The page on the computer that plots the readings live.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <button class="flow-motion-toggle" type="button" hidden>Pause animation</button>
+      <div class="data-path-layout data-path-views">
+        <svg class="telemetry-flow" viewBox="0 0 560 352" role="img"
+          aria-labelledby="flow-title flow-description">
+          <title id="flow-title">CanSat telemetry and onboard storage</title>
+          <desc id="flow-description">
+            Sensors send readings to the RP2350. It saves a copy to onboard storage and sends
+            live readings over LoRa to the ESP32 ground station, which relays them to the
+            flight dashboard over Wi-Fi.
+          </desc>
+          <defs>
+            <marker id="flow-arrow" viewBox="0 0 8 8" refX="7" refY="4"
+              markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M1 1l6 3-6 3" fill="none" stroke="currentColor" stroke-linecap="round" />
+            </marker>
+            <path id="flow-sensors" d="M222 83h110" />
+            <path id="flow-radio" d="M376 122v22a12 12 0 0 1-12 12H135a12 12 0 0 0-12 12v76" />
+            <path id="flow-storage" d="M449 122v49" />
+            <path id="flow-wifi" d="M222 283h110" />
+          </defs>
+
+          <rect class="flow-panel" x="1" y="1" width="558" height="350" rx="24" />
+          <text class="flow-region" x="24" y="32">CANSAT</text>
+          <text class="flow-region" x="24" y="228">GROUND</text>
+
+          <g class="flow-routes" marker-end="url(#flow-arrow)">
+            <use href="#flow-sensors" />
+            <use href="#flow-radio" />
+            <use href="#flow-storage" class="flow-archive" />
+            <use href="#flow-wifi" />
+          </g>
+          <g class="flow-pulses" aria-hidden="true">
+            <use href="#flow-sensors" />
+            <use href="#flow-radio" />
+            <use href="#flow-storage" class="flow-archive" />
+            <use href="#flow-wifi" />
+          </g>
+          <text class="flow-link-label" x="277" y="70" text-anchor="middle">Readings</text>
+          <text class="flow-link-label" x="178" y="150">LoRa radio</text>
+          <text class="flow-link-label" x="277" y="270" text-anchor="middle">Wi-Fi</text>
+
+          <g transform="translate(24 44)">
+            <rect class="flow-node" width="198" height="78" rx="14" />
+            <path class="flow-icon" d="M14 30h5l4-9 5 16 4-7h5" />
+            <text class="flow-name" x="47" y="35">Sensors</text>
+            <text class="flow-detail" x="14" y="59">Air · motion · GPS · sound</text>
+          </g>
+          <g transform="translate(338 44)">
+            <rect class="flow-node" width="198" height="78" rx="14" />
+            <path class="flow-icon" d="M18 24h13v13H18z M22 21v3m5-3v3m-5 13v3m5-3v3m-12-12h3m-3 5h3m13-5h3m-3 5h3" />
+            <text class="flow-name" x="47" y="35">RP2350</text>
+            <text class="flow-detail" x="14" y="59">Timestamps readings</text>
+          </g>
+          <g transform="translate(338 176)">
+            <rect class="flow-node flow-storage-node" width="198" height="55" rx="12" />
+            <path class="flow-icon" d="M17 18h9l7 7v13H17z M22 20v6m4-5v5" />
+            <text class="flow-name" x="47" y="33">Local storage</text>
+          </g>
+          <g transform="translate(24 244)">
+            <rect class="flow-node" width="198" height="78" rx="14" />
+            <path class="flow-icon" d="M24 27v13m-6 0h12m-12-17a8 8 0 0 0 0 11m12-11a8 8 0 0 1 0 11" />
+            <text class="flow-name" x="47" y="35">ESP32 station</text>
+            <text class="flow-detail" x="14" y="59">Receives live telemetry</text>
+          </g>
+          <g transform="translate(338 244)">
+            <rect class="flow-node" width="198" height="78" rx="14" />
+            <path class="flow-icon" d="M15 21v18h21m-17-5 5-7 5 3 6-9" />
+            <text class="flow-name" x="47" y="35">Dashboard</text>
+            <text class="flow-detail" x="14" y="59">Plots readings live</text>
+          </g>
+        </svg>
+
+        <svg class="telemetry-flow" viewBox="0 0 620 338" role="img"
+          aria-labelledby="scene-title scene-description">
+          <title id="scene-title">CanSat in flight above the ground station</title>
+          <desc id="scene-description">
+            A CanSat descends by parachute and transmits readings over LoRa to a ground station.
+            The station relays the readings via Wi-Fi to a nearby laptop.
+          </desc>
+          <defs>
+            <linearGradient id="scene-can-shading">
+              <stop stop-color="#315273" />
+              <stop offset=".45" stop-color="#78adcf" />
+              <stop offset="1" stop-color="#365a7d" />
+            </linearGradient>
+            <path id="scene-radio" d="M194 147Q243 133 302 202" />
+            <path id="scene-wifi" d="M366 227Q406 197 452 221" />
+          </defs>
+          <rect class="flow-panel" x="1" y="1" width="618" height="336" rx="24" />
+
+          <!-- Raised ground plane, drawn in perspective. -->
+          <path class="scene-side" d="M200 242l140 74 240-60v11l-240 60-140-74z" />
+          <path class="scene-ground" d="M200 242l238-61 142 75-240 60z" />
+          <path class="scene-grid" d="M235 261l238-61m-203 79 238-61m-203 80 238-61
+            M260 227l140 74m-81-90 142 75m-82-90 142 75" />
+
+          <g class="flow-routes" marker-end="url(#flow-arrow)">
+            <use href="#scene-radio" />
+            <use href="#scene-wifi" />
+          </g>
+          <g class="flow-pulses" aria-hidden="true">
+            <use href="#scene-radio" />
+            <use href="#scene-wifi" />
+          </g>
+          <text class="flow-link-label" x="239" y="141" text-anchor="middle">LoRa</text>
+          <text class="flow-link-label" x="404" y="201" text-anchor="middle">Wi-Fi</text>
+
+          <!-- Parachute and cylindrical payload. -->
+          <path class="scene-chute" d="M91 83c7-33 32-53 67-53s60 20 67 53
+            c-11-7-23-8-34 0-9-8-22-9-33 0-11-9-24-8-34 0-11-8-22-7-33 0z" />
+          <path class="scene-chute-seams" d="M124 82c4-27 19-48 34-52m33 52c-4-27-19-48-33-52" />
+          <path class="scene-wire" d="M92 83l66 39 66-39m-100 0 34 39 33-39" />
+          <path d="M135 131h46v43c0 13-46 13-46 0z" fill="url(#scene-can-shading)" />
+          <ellipse cx="158" cy="131" rx="23" ry="8" fill="#acceeb" />
+          <path class="scene-wire" d="M158 122v7" />
+          <path d="M144 157c10 3 20 3 29 0" fill="none" stroke="#b9e7ff" stroke-width="2" />
+          <text class="flow-name" x="158" y="206" text-anchor="middle">CanSat</text>
+
+          <!-- Ground receiver and antenna. -->
+          <path class="scene-side" d="M278 234l34 16 49-12v16l-49 12-34-16z" />
+          <path class="scene-device" d="M278 234l49-13 34 17-49 12z" />
+          <path class="scene-wire" d="M323 234v-29m-20 7 36-14m-28 9-6-6m15 3-6-7m16 4-6-7" />
+          <circle cx="318" cy="256" r="2" fill="#78d9ee" />
+          <text class="flow-name" x="314" y="291" text-anchor="middle">Ground station</text>
+
+          <!-- Laptop screen and keyboard deck. -->
+          <path class="scene-device" d="M457 221l60-15v40l-60 15z" />
+          <path class="scene-screen" d="M462 225l50-12v28l-50 13z" />
+          <path class="scene-wire" d="M468 245l10-12 9 3 16-14" />
+          <path class="scene-side" d="M457 261l60-15 22 10-62 16z" />
+          <path class="scene-wire" d="M473 260l44-11m-37 15 44-11" />
+          <text class="flow-name" x="503" y="290" text-anchor="middle">Laptop</text>
+        </svg>
       </div>
     </section>
+
     <section class="section-row" id="hardware">
       <h2>Measurements &amp; Hardware</h2>
       <dl class="measurements">
         <dt>Atmosphere</dt>
-        <dd>BME688 for pressure, temperature, humidity, and gas resistance. TMP36 and SHT45 provide additional temperature and humidity readings. A dedicated CO sensor is planned.</dd>
+        <dd>
+          <strong>BME688</strong> for pressure, temperature, humidity, and gas resistance. TMP36 and SHT45 provide
+          additional temperature and humidity readings. A dedicated CO sensor is planned.
+        </dd>
         <dt>Motion and position</dt>
-        <dd>An IMU measures acceleration and rotation. The MAX-M10S GPS logs position and speed so we can reconstruct the flight path.</dd>
+        <dd>
+          An IMU measures acceleration and rotation. The <strong>MAX-M10S GPS</strong> logs position and speed so we
+          can reconstruct the flight path.
+        </dd>
         <dt>Power and sound</dt>
-        <dd>We’re considering an INA260 to monitor voltage and current, and an ICS-43434 microphone to capture flight sounds.</dd>
+        <dd>
+          We’re considering an INA260 to monitor voltage and current, and an ICS-43434 microphone to
+          capture flight sounds.
+        </dd>
       </dl>
     </section>
+
     <section class="section-row" id="software">
       <h2>Software &amp; Storage</h2>
-      <p>The flight software will timestamp readings and log them to microSD. We’re also considering onboard flash storage. After the flight, we can calculate quantities such as descent speed from changes in altitude over time and compare the results with the radio recording.</p>
+      <div class="stack">
+        <p>
+          The flight software will timestamp readings and log them to <strong>microSD</strong>. We’re also
+          considering onboard flash storage.
+        </p>
+        <p>
+          After the flight, we can calculate quantities such as <em>descent speed</em> from changes in
+          altitude over time and compare the results with the radio recording.
+        </p>
+      </div>
     </section>
+
     <section class="section-row" id="electronics">
       <h2>Electronics &amp; CAD</h2>
-      <p>The payload design brings the RP2350, sensors, storage, and radio together inside a can-sized enclosure. We’ll add wiring diagrams and interactive 3D models when the files are ready.</p>
+      <div class="stack">
+        <p>
+          The payload design brings the RP2350, sensors, storage, and radio together inside a
+          <strong>can-sized enclosure</strong>.
+        </p>
+        <p>We’ll add wiring diagrams and interactive 3D models when the files are ready.</p>
+      </div>
     </section>
+
     <nav class="page-next" aria-label="Next page">
-      <a class="action" href="telemetry/index.html">View Telemetry <span aria-hidden="true">→</span></a>
+      <a class="action" href="telemetry/index.html">
+        View Telemetry <span aria-hidden="true">→</span>
+      </a>
     </nav>
   </main>
   <!-- site-footer -->
