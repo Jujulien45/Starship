@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Starship CanSat</title>
+  <title>Starship | CanSat 2026–2027</title>
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="stylesheet" href="styles.css">
   <script type="module" src="./site.js"></script>
@@ -13,18 +13,40 @@
   <main class="wrap">
     <section class="hero home-hero" id="intro">
       <div>
-        <p class="season">CEPES · Jodoigne · 2026–2027</p>
-        <h1>Starship<br>CanSat</h1>
-        <p class="lead">We’re a student team at CEPES in Jodoigne, Belgium, building a satellite the size of a can.</p>
-        <p><strong>Simple parts. Bigger ideas.</strong></p>
-        <p>A few reliable sensors and a radio are enough to ask a big question: what can we learn from a short fall? Our work is in how we put those parts together, test them, and turn their readings into a picture of the flight.</p>
-        <a class="action" href="engineering.html">Explore the Tech</a>
+        <p class="season">CanSat 2026–2027 · CEPES · Jodoigne</p>
+        <h1>Starship</h1>
+        <p class="lead">We’re Starship, a student team from CEPES in Jodoigne, Belgium, taking part in the 2026–2027 CanSat competition.</p>
+        <figure class="motto">
+          <blockquote>
+            <p>“An idiot admires complexity. A genius admires simplicity.”</p>
+          </blockquote>
+          <figcaption>— Terry A. Davis, the creator of <a href="https://templeos.org/">TempleOS</a>, a public-domain OS.</figcaption>
+        </figure>
+        <p>For us, simplicity starts with choosing sensors that answer specific questions about our descent. The challenge is to understand what each sensor can measure and where its limits are, then get as much out of every reading as we can. We’ll record the raw data, calculate everything it can reliably tell us, from descent speed to how conditions change with altitude, and visualise the results.</p>
       </div>
       <img class="hero-mark" src="/assets/favicon.svg" alt="">
     </section>
     <section class="section-row" id="about-cansat">
-      <h2>What is CanSat?</h2>
-      <p>A CanSat is a small payload that fits inside a can-sized enclosure. It brings together sensors, a computer, and a radio to collect and transmit data during a mission.</p>
+      <h2>What is a CanSat?</h2>
+      <div class="stack">
+        <p>A CanSat is a working model of a satellite that fits inside a drinks can. During descent, it measures air temperature and pressure and transmits the readings to a ground station. Each team also chooses a secondary mission of its own.</p>
+        <dl class="measurements">
+          <dt>The CanSat competition</dt>
+          <dd>In this European Space Agency education project, students work within size and weight limits, test their design, and present their results at the end of the competition.</dd>
+          <dt>Building a miniature satellite</dt>
+          <dd>Teams fit the sensors, onboard computer, power supply, and radio into a can-sized structure. They write the flight software and set up a ground station to receive the data.</dd>
+          <dt>Launch and analysis</dt>
+          <dd>After the flight, teams analyse the data to see whether they met their mission objectives and use the results to explain their engineering choices.</dd>
+        </dl>
+        <div class="cansat-resources">
+          <h3>Further reading</h3>
+          <ul>
+            <li><a href="https://education.esa.int/what_is_a_cansat/">ESA Education · What is a CanSat?</a></li>
+            <li><a href="https://recherche.wallonie.be/Cansat-Belgium">Wallonie Recherche · CanSat Belgium</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/CanSat">Wikipedia · CanSat</a></li>
+          </ul>
+        </div>
+      </div>
     </section>
     <section class="section-row" id="mission">
       <h2>Our Mission</h2>
@@ -38,6 +60,9 @@
       <h2>Sponsors</h2>
       <p>Sponsor details will be added here.</p>
     </section>
+    <nav class="page-next" aria-label="Next page">
+      <a class="action" href="tech.html">Explore the technical side of project<span aria-hidden="true">→</span></a>
+    </nav>
   </main>
   <!-- site-footer -->
 </body>

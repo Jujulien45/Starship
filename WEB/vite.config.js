@@ -36,7 +36,7 @@ export default defineConfig({
     rolldownOptions: {
       input: {
         home: resolve(import.meta.dirname, 'index.html'),
-        tech: resolve(import.meta.dirname, 'engineering.html'),
+        tech: resolve(import.meta.dirname, 'tech.html'),
         telemetry: resolve(import.meta.dirname, 'telemetry/index.html'),
       },
     },

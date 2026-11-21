@@ -6,7 +6,7 @@
 
 | Technology | Role |
 | --- | --- |
-| HTML and CSS | Home and Engineering are ordinary HTML pages with shared CSS. Add small JavaScript modules only where a feature needs them. Telemetry uses the same page structure and styles. |
+| HTML and CSS | Home and Tech are ordinary HTML pages with shared CSS. Add small JavaScript modules only where a feature needs them. Telemetry uses the same page structure and styles. |
 | JavaScript | On Telemetry, load the selected flight, parse its CSV, and update the dashboard. When live telemetry is available, fetch new samples from the API. |
 | Vite | Run the local development server and build the three pages and their assets for deployment. |
 | Apache ECharts | Plot timestamped sensor readings in the browser for both CSV recordings and live telemetry. |
@@ -14,7 +14,7 @@
 
 ## Static release
 
-Home and Engineering use static HTML and shared CSS. Edit `header.html` and `footer.html` to update both pages. Vite inserts these shared files when it serves or builds either page. The shared `site.js` handles the theme switcher and marks the current page in the main navigation. CSS shows its section links, and the browser follows the section anchors. ECharts is planned for the Telemetry milestone.
+Home and Tech use static HTML and shared CSS. Edit `header.html` and `footer.html` to update both pages. Vite inserts these shared files when it serves or builds either page. The shared `site.js` handles the theme switcher and marks the current page in the main navigation. CSS shows its section links, and the browser follows the section anchors. ECharts is planned for the Telemetry milestone.
 
 ### Local development
 
@@ -25,7 +25,7 @@ npm ci
 npm run dev
 ```
 
-Open the URL Vite prints for Home and append `/engineering.html` for Engineering. Run `npm run build` to generate the deployable static files in `dist/`, then `npm run preview` to check that build locally.
+Open the URL Vite prints for Home and append `/tech.html` for Tech. Run `npm run build` to generate the deployable static files in `dist/`, then `npm run preview` to check that build locally.
 
 Publish the three pages, a dataset list, and the dummy or recorded flight CSVs as static files. The browser loads the selected CSV and displays it in the shared dashboard. **Live** shows **Disconnected** before launch. The first milestone is selecting a dummy flight and seeing its readings plotted.
 

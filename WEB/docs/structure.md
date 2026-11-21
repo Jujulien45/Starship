@@ -1,8 +1,8 @@
-# Starship CanSat 2026–2027
+# Starship | CanSat 2026–2027
 
 ## Site Structure
 
-The main navigation is **Home · Tech**. Tech replaces the Engineering label.
+The main navigation is **Home · Tech**.
 
 ### Home
 
@@ -18,12 +18,6 @@ The main navigation is **Home · Tech**. Tech replaces the Engineering label.
 2. **Measurements & Hardware** — Cover the measurements, sensors, and other hardware, including why the team chose them.
 3. **Software & Storage** — Explain how readings are collected, processed, stored, and analyzed. Include memory limits if they shaped the design.
 4. **Electronics & CAD** — Cover electronics, wiring, and mechanical design. Photos, sketches, or CAD screenshots can fill this section until interactive 3D models are ready.
-5. **Project Files** — Close Tech with a short introduction and a **View on GitHub** button. The repository gives visitors access to the files the site leaves out.
-
-Suggested copy for Project Files:
-
-> Explore our GitHub repository for the full project, including files we haven’t covered here.
-
 ## Telemetry
 
 The shared header has a distinct Telemetry button at the top right. A separate icon button switches the theme. The dashboard opens with a simulated descent and lets visitors switch to Live.
