@@ -239,6 +239,12 @@ p { line-height: 1.65; }
   border-top: 1px solid var(--line);
 }
 .section-row > h2 { margin-block-end: .75rem; }
+.in-section-divider {
+  margin-block: clamp(1rem, 3vw, 2rem);
+  border: 0;
+  block-size: 1px;
+  background: repeating-linear-gradient(to right, var(--line) 0 16px, transparent 16px 24px);
+}
 .section-row p { color: var(--muted); margin: 0; }
 .section-row p, .section-row .measurements { max-inline-size: 72ch; }
 .cansat-layout {
@@ -353,7 +359,8 @@ p { line-height: 1.65; }
   gap: clamp(1rem, 3vw, 2.5rem);
 }
 .data-path-glossary h3 { margin: 0 0 .5rem; font-size: 1.05rem; }
-.data-path-views { align-items: center; }
+.data-path-views figure { margin: 0; }
+.data-path-views figcaption { margin-block-end: .5rem; font-weight: 700; }
 .telemetry-flow {
   display: block;
   inline-size: 100%;
@@ -377,6 +384,12 @@ p { line-height: 1.65; }
 .flow-routes .flow-archive { stroke-dasharray: 4 5; }
 .scene-ground { fill: var(--control); stroke: var(--line); }
 .scene-grid { fill: none; stroke: var(--accent); opacity: .25; }
+.scene-coverage {
+  fill: none;
+  stroke: var(--accent);
+  stroke-dasharray: 6 5;
+  opacity: .55;
+}
 .scene-side { fill: var(--background); stroke: var(--line); }
 .scene-device { fill: var(--control-hover); stroke: var(--accent); }
 .scene-screen { fill: var(--background); }
