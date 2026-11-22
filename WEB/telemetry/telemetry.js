@@ -1,5 +1,3 @@
-import csv from './sample-flight.csv?raw';
-
 const source = document.querySelector('#dataset');
 const status = document.querySelector('.telemetry-status');
 const flight = document.querySelector('#flight');
@@ -57,15 +55,32 @@ function drawChart() {
   context.stroke();
 }
 
-const sample = csv.trim().split(/\r?\n/).slice(1)
-  .map(line => line.split(',').map(Number));
+let sample;
 
-function showDataset() {
+async function showDataset() {
   flight.hidden = true;
   if (source.value === 'live') {
     status.textContent = 'Disconnected';
     return;
   }
+  if (!sample) {
+    status.textContent = 'Loading sample flight…';
+    try {
+      const response = await fetch(new URL('./sample-flight.csv', import.meta.url));
+      if (!response.ok) throw new Error(`Could not load sample flight (${response.status})`);
+      const csv = await response.text();
+      sample = csv.trim().split(/\r?\n/).slice(1)
+        .map(line => line.split(',').map(Number));
+      if (sample.length === 0) {
+        sample = undefined;
+        throw new Error('The sample flight is empty');
+      }
+    } catch {
+      if (source.value !== 'live') status.textContent = 'Could not load the sample flight.';
+      return;
+    }
+  }
+  if (source.value === 'live') return;
   readings = sample;
 
   const rows = readings.map(reading => {
